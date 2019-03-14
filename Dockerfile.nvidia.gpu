@@ -1,0 +1,5 @@
+FROM nvcr.io/nvidia/pytorch:19.02-py3
+RUN pip install pytorch-pretrained-bert==0.6.1 Click==7.0
+RUN python -c "from pytorch_pretrained_bert.tokenization import BertTokenizer; BertTokenizer.from_pretrained('bert-base-uncased')"
+RUN python -c "from pytorch_pretrained_bert.modeling import BertForSequenceClassification; BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)"
+CMD ["bash"]
